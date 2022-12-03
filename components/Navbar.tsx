@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components';
 import { HamburgerIcon } from './Hamburger';
 import useWindowDimensions from '../hooks/useWindowDimensions';
+import { Fragment } from 'react';
 
 interface NavProps {
     isDesktop: boolean;
@@ -46,17 +47,17 @@ export const Navbar = () => {
 
 
     const Logo = [
-        <Link href="/"><Image src="/favicon-original.png" alt="Favicon" width={40} height={40}></Image></Link>
+        <Link key='logo' href="/"><Image src="/favicon-original.png" alt="Favicon" width={40} height={40}></Image></Link>
     ]
     
     const Links = [
-        <>
+        <Fragment key='links'>
         <LinksContainer><Link href="/">Home</Link></LinksContainer>
         <LinksContainer><Link href="/about">About</Link></LinksContainer>
         <LinksContainer><Link href="/resume">Resume</Link></LinksContainer>
         <LinksContainer><Link href="/projects">Projects</Link></LinksContainer>
         <LinksContainer><Link href="/contact">Contact</Link></LinksContainer>
-        </>
+        </Fragment>
     ]
 
 
