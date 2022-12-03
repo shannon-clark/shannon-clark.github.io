@@ -25,10 +25,9 @@ const NavContainer = styled.nav<NavProps>`
 `;
 
 
-const LinksContainer = styled.div`
-    margin-left: 12px;
-    height: 100%
-    padding: 0 5px;
+const LinksContainer = styled.div<NavProps>`
+    margin-left: 20px;
+    padding-top: ${( { isDesktop } ) => isDesktop ? '0px': '20px'};
     font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     font-weight: bold;
@@ -42,6 +41,7 @@ const LinksContainer = styled.div`
 
 
 
+
 export const Navbar = () => {
     const { isDesktop } = useWindowDimensions();
 
@@ -52,11 +52,21 @@ export const Navbar = () => {
     
     const Links = [
         <Fragment key='links'>
-        <LinksContainer><Link href="/">Home</Link></LinksContainer>
-        <LinksContainer><Link href="/about">About</Link></LinksContainer>
-        <LinksContainer><Link href="/resume">Resume</Link></LinksContainer>
-        <LinksContainer><Link href="/projects">Projects</Link></LinksContainer>
-        <LinksContainer><Link href="/contact">Contact</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop}><Link href="/">Home</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop}><Link href="/about">About</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop}><Link href="/resume">Resume</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop}><Link href="/projects">Projects</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop}><Link href="/contact">Contact</Link></LinksContainer>
+        {/* <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href="/resume">Resume</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/contact">Contact</Link> */}
+        {/* <><Link href="/">Home</Link></>
+        <><Link href="/about">About</Link></>
+        <><Link href="/resume">Resume</Link></>
+        <><Link href="/projects">Projects</Link></>
+        <><Link href="/contact">Contact</Link></> */}
         </Fragment>
     ]
 

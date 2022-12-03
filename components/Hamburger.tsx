@@ -21,17 +21,17 @@ const HamburgerMenuBackdrop = styled.div<{ open: boolean }>`
   width: 100vw;
   top: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.paper}80;
   pointer-events: visiblePainted;
 `;
+
 const HamburgerMenu = styled.div<{ open: boolean }>`
   position: fixed;
   height: 100vh;
   transition: width 300ms;
-  width: ${({ open }) => (open ? "65vw" : "0vw")};
+  width: ${({ open }) => (open ? "25vw" : "0vw")};
   top: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.background};
+  background-color: grey;
   z-index: 110;
 `;
 interface HamburgerProps {
