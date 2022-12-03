@@ -20,7 +20,7 @@ const NavContainer = styled.nav<NavProps>`
     display: flex;
     justify-content: ${( { isDesktop } ) => isDesktop ? 'center' : 'right'};
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: ${( { isDesktop } ) => isDesktop ? '1px solid #ddd' : ''};
     background-color:rgb(12, 11, 11)
 `;
 
@@ -63,7 +63,7 @@ export const Navbar = () => {
 
     return (
        <NavContainer isDesktop={isDesktop}>
-            { isDesktop ? <>{ Logo }{ Links }</>: <HamburgerIcon />}         
+            { isDesktop ? <>{ Logo }{ Links }</>: <HamburgerIcon>{Links}</HamburgerIcon>}        
        </NavContainer>   
     );
 
