@@ -11,7 +11,7 @@ a {
   text-decoration: none;
 }
 
-nav {
+/* nav {
   position: fixed;
   top: 0px;
   right: 0px; 
@@ -44,7 +44,7 @@ nav a:hover {
 
 nav .logo {
   margin-right: 1em;
-}
+} */
 
 footer {
   display: block;

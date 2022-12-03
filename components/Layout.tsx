@@ -3,7 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Footer from './Footer';
-import Navbar from './Navbar';
+import { Navbar } from './Navbar';
+
 
 export default function Layout({ children }: any) {
     return (
