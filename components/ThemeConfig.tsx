@@ -32,13 +32,12 @@ export const lightTheme: ThemeProps = {
       color: ${({ theme }) => theme.text};
       margin: 0px;
       padding-top: 50px;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      font-family:n Helvetica Neue, Arial,  sans-serif;
     }
     a {
         color: inherit;
         text-decoration: none;
-      }
+    }
   `;
   };
 

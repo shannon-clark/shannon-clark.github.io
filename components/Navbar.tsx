@@ -34,7 +34,7 @@ const LinksContainer = styled.div<NavProps>`
     margin-left: 10px;
     margin-right: 10px;
     padding-top: ${( { isDesktop } ) => isDesktop ? '0px': '20px'};
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Helvetica Neue, Arial, sans-serif;
     font-size: large;
     font-weight: bold;
     color: ${({ theme }) => theme.text};
