@@ -84,7 +84,7 @@ export const Navbar = () => {
 
     return (
        <NavContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
-            { isDesktop ? <><LogoContainer>{ Logo }</LogoContainer>{ Links }<ThemeSymbol /></>: <><HamburgerIcon>{Links}</HamburgerIcon>{Logo}</>}        
+            { isDesktop ? <><LogoContainer>{ Logo }</LogoContainer>{ Links }<ThemeSymbol /></>: <><HamburgerIcon>{Links}</HamburgerIcon>{Logo}<ThemeSymbol /></>}        
        </NavContainer>   
     );
 
