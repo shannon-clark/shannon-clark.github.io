@@ -7,14 +7,15 @@ export interface ThemeProps{
 }
 
 export const lightTheme: ThemeProps = {
-    background: "#ECE8EF",
+    // background: "#ECE8EF",
+    background: "#ffffff",
     text: "#0C0C0C",
     textsecondary: "#68D4E6",
   };
   
   export const darkTheme: ThemeProps = {
     background: "#0C0C0C",
-    text: "#ECE8EF",
+    text: "#ffffff",
     textsecondary: "#68D4E6",
     // #EB67FC pink
     // #6A706E grey

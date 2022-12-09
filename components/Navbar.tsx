@@ -46,10 +46,15 @@ const LinksContainer = styled.div<NavProps>`
 `;
 
 const LogoContainer = styled.div`
+    margin-top: 2px;
     margin-left: 10px;
     margin-right: 10px;
 `
 
+const ThemeContainer = styled.div`
+    margin-left: 10px;
+    margin-right: 10px;
+`
 
 
 
@@ -84,7 +89,7 @@ export const Navbar = () => {
 
     return (
        <NavContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
-            { isDesktop ? <><LogoContainer>{ Logo }</LogoContainer>{ Links }<ThemeSymbol /></>: <><HamburgerIcon>{Links}</HamburgerIcon>{Logo}<ThemeSymbol /></>}        
+            { isDesktop ? <><LogoContainer>{ Logo }</LogoContainer>{ Links }<ThemeContainer><ThemeSymbol /></ThemeContainer></>: <><HamburgerIcon>{Links}</HamburgerIcon>{Logo}<ThemeSymbol /></>}        
        </NavContainer>   
     );
 

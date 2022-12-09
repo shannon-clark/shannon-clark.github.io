@@ -9,7 +9,7 @@ import { useDarkMode } from 'next-dark-mode'
   
 const ThemeSymbolContainer = styled.div`
     margin-right: 10px
-    margin-left: 10px
+    margin-left: 20px
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
