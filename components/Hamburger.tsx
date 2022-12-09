@@ -12,6 +12,16 @@ const HamburgerContainer = styled.div`
     margin-right: 20
 `;
 
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+    &:before {
+        color: "${({ theme }) => theme.text}"
+    }
+    &:hover,
+    &:focus {
+        color: ${({ theme }) => theme.textsecondary};
+    }
+`;
+
 
 const HamburgerMenuBackdrop = styled.div<{ open: boolean }>`
   position: fixed;
@@ -20,7 +30,7 @@ const HamburgerMenuBackdrop = styled.div<{ open: boolean }>`
   opacity: ${({ open }) => (open ? 1 : 0)};
   width: 100vw;
   top: 0;
-  right: 0;
+  left: 0;
   pointer-events: visiblePainted;
 `;
 
@@ -30,13 +40,11 @@ const HamburgerMenu = styled.div<{ open: boolean }>`
   transition: width 300ms;
   width: ${({ open }) => (open ? "25vw" : "0vw")};
   top: 0;
-  right: 0;
+  left: 0;
   background-color: grey;
   z-index: 110;
 `;
-interface HamburgerProps {
-    children: ReactNode;
-}
+
 
 export const HamburgerIcon= (props: HamburgerProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,17 +57,16 @@ export const HamburgerIcon= (props: HamburgerProps) => {
                 setIsMenuOpen(false);
                 }}
              />
-            <FontAwesomeIcon
+            <StyledFontAwesomeIcon
                 onClick={() => {
                     setIsMenuOpen(true);
                 }}
                 style={{ zIndex: 115, cursor: "pointer" }}
                 size="xl"
                 icon={faBars} 
-                color="grey"
             />
             <HamburgerMenu open={isMenuOpen}>
-                {props.children}
+                {isMenuOpen ? props.children : <></>}
             </HamburgerMenu>
         </HamburgerContainer>
     );

@@ -4,9 +4,13 @@ import styled from 'styled-components';
 import { HamburgerIcon } from './Hamburger';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 import { Fragment } from 'react';
+import { useDarkMode } from 'next-dark-mode'
+import { ThemeSymbol } from './ThemeSymbol';
+
 
 interface NavProps {
     isDesktop: boolean;
+    darkModeActive: boolean;
   }
 
 const NavContainer = styled.nav<NavProps>`
@@ -18,32 +22,49 @@ const NavContainer = styled.nav<NavProps>`
     margin: 0 0 0 0;
     padding: 5px 15px 5px 15px;
     display: flex;
-    justify-content: ${( { isDesktop } ) => isDesktop ? 'center' : 'right'};
+    justify-content: ${( { isDesktop } ) => isDesktop ? 'center' : 'left'};
     align-items: center;
-    border-bottom: ${( { isDesktop } ) => isDesktop ? '1px solid #ddd' : ''};
-    background-color:rgb(12, 11, 11)
+    border-bottom: ${( { isDesktop } ) => isDesktop ? '1px solid': ''};
+    border-bottom-color: ${( { theme } ) => theme.text};
+    background-color: ${({ theme }) => theme.background};
 `;
 
 
 const LinksContainer = styled.div<NavProps>`
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     padding-top: ${( { isDesktop } ) => isDesktop ? '0px': '20px'};
     font-family: Helvetica, Arial, sans-serif;
     font-size: large;
     font-weight: bold;
-    color: white;
+    color: ${({ theme }) => theme.text};
     transition: font-size 0.25s;
     &:hover,
     &:focus {
-        color: #68d4e6;
+        color: ${({ theme }) => theme.textsecondary};
     }
 `;
+
+const LogoContainer = styled.div`
+    margin-left: 10px;
+    margin-right: 10px;
+`
+
+
 
 
 
 
 export const Navbar = () => {
     const { isDesktop } = useWindowDimensions();
+    const {
+        autoModeActive,    // boolean - whether the auto mode is active or not
+        autoModeSupported, // boolean - whether the auto mode is supported on this browser
+        darkModeActive,    // boolean - whether the dark mode is active or not
+        switchToAutoMode,  // function - toggles the auto mode on
+        switchToDarkMode,  // function - toggles the dark mode on
+        switchToLightMode, // function - toggles the light mode on
+      } = useDarkMode()
 
 
     const Logo = [
@@ -52,28 +73,18 @@ export const Navbar = () => {
     
     const Links = [
         <Fragment key='links'>
-        <LinksContainer isDesktop={isDesktop}><Link href="/">Home</Link></LinksContainer>
-        <LinksContainer isDesktop={isDesktop}><Link href="/about">About</Link></LinksContainer>
-        <LinksContainer isDesktop={isDesktop}><Link href="/resume">Resume</Link></LinksContainer>
-        <LinksContainer isDesktop={isDesktop}><Link href="/projects">Projects</Link></LinksContainer>
-        <LinksContainer isDesktop={isDesktop}><Link href="/contact">Contact</Link></LinksContainer>
-        {/* <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
-        <Link href="/resume">Resume</Link>
-        <Link href="/projects">Projects</Link>
-        <Link href="/contact">Contact</Link> */}
-        {/* <><Link href="/">Home</Link></>
-        <><Link href="/about">About</Link></>
-        <><Link href="/resume">Resume</Link></>
-        <><Link href="/projects">Projects</Link></>
-        <><Link href="/contact">Contact</Link></> */}
+        <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/">Home</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/about">About</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/resume">Resume</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/projects">Projects</Link></LinksContainer>
+        <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/contact">Contact</Link></LinksContainer>
         </Fragment>
     ]
 
 
     return (
-       <NavContainer isDesktop={isDesktop}>
-            { isDesktop ? <>{ Logo }{ Links }</>: <HamburgerIcon>{Links}</HamburgerIcon>}        
+       <NavContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
+            { isDesktop ? <><LogoContainer>{ Logo }</LogoContainer>{ Links }<ThemeSymbol /></>: <><HamburgerIcon>{Links}</HamburgerIcon>{Logo}</>}        
        </NavContainer>   
     );
 
