@@ -34,6 +34,7 @@ export const lightTheme: ThemeProps = {
       margin: 0px;
       padding-top: 50px;
       font-family:n Helvetica Neue, Arial,  sans-serif;
+      overflow: hidden;
     }
     a {
         color: inherit;
