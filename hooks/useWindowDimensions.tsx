@@ -4,21 +4,21 @@ import { useEffect, useState } from 'react';
 type Dimensions = {
     width: number | undefined;
     height: number | undefined;
-    isDesktop: boolean;
+    isDesktop: boolean | undefined;
 };
 
 const useWindowDimensions = (): Dimensions => {
     const [windowDimensions, setWindowDimensions] = useState<Dimensions>({
         width: undefined,
         height: undefined,
-        isDesktop: false,
+        isDesktop: undefined,
     });
     useEffect(() => {
         function handleResize(): void {
             setWindowDimensions({
                 width: window.innerWidth,
                 height: window.innerHeight,
-                isDesktop:  window.innerWidth > 768
+                isDesktop:  window.innerWidth > 500
             });
         }
         handleResize();

@@ -6,17 +6,17 @@ const HomepageContainer = styled.div`
   height: calc(100vh - 65px);
   overflow: hidden;
   padding-top: 65px;
+  align-items: center;
+  justify-content: center;
   
 `;
 
 const TextContainer = styled.div`
-  font-size: 3rem; 
+  font-size: 2rem; 
   font-weight: bold; 
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.text}; 
-  margin: 3rem 0; 
-  margin-left: 100px;
 `;
 
 const Image = styled.div`
@@ -46,9 +46,7 @@ export default function Home() {
       </Head>
 
       <HomepageContainer>
-        <Image>
-          <StyledImage src="/photo.svg" alt="Shannon Clark" />
-        </Image>
+        <TextContainer>Hi, I'm Shannon.</TextContainer>
            
           
           

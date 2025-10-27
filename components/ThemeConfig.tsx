@@ -4,19 +4,22 @@ export interface ThemeProps{
     background: string;
     text: string;
     textsecondary: string;
+    hovered: string;
 }
 
 export const lightTheme: ThemeProps = {
-    // background: "#ECE8EF",
-    background: "#ffffff",
-    text: "#0C0C0C",
+    background: "#ECE8EF",
+    text: "#313131ff",
     textsecondary: "#68D4E6",
+    hovered: "#000000"
   };
   
   export const darkTheme: ThemeProps = {
-    background: "#0C0C0C",
-    text: "#ffffff",
+    background: "#232222ff",
+    text: "#ffffffc9",
     textsecondary: "#68D4E6",
+    hovered: "#ffffff"
+
     // #EB67FC pink
     // #6A706E grey
   };

@@ -7,6 +7,15 @@ import { Fragment } from 'react';
 import { useDarkMode } from 'next-dark-mode'
 import { ThemeSymbol } from './ThemeSymbol';
 
+const StyledImage = styled.img`
+  max-width: 100%;
+  max-height: calc(100vh - 55px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+`;
 
 interface NavProps {
     isDesktop: boolean;
@@ -14,19 +23,18 @@ interface NavProps {
   }
 
 const NavContainer = styled.nav<NavProps>`
-    position: fixed;
-    height: 55px;
-    top: 0px;
-    right: 0px; 
-    left: 0px;
-    margin: 0 0 0 0;
-    padding: 5px 15px 5px 15px;
-    display: flex;
-    justify-content: ${( { isDesktop } ) => isDesktop ? 'center' : 'left'};
-    align-items: center;
-    border-bottom: ${( { isDesktop } ) => isDesktop ? '1px solid': ''};
-    border-bottom-color: ${( { theme } ) => theme.text};
-    background-color: ${({ theme }) => theme.background};
+  position: fixed;
+  height: 55px;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: ${({ isDesktop }) => (isDesktop ? 'center' : 'space-between')};
+  align-items: center;
+  border-bottom: ${({ isDesktop }) => (isDesktop ? '1px solid' : 'none')};
+  border-bottom-color: ${({ theme }) => theme.text};
 `;
 
 
@@ -41,7 +49,7 @@ const LinksContainer = styled.div<NavProps>`
     transition: font-size 0.25s;
     &:hover,
     &:focus {
-        color: ${({ theme }) => theme.textsecondary};
+        color: ${({ theme }) => theme.hovered};
     }
 `;
 
@@ -62,6 +70,11 @@ const ThemeContainer = styled.div`
 
 export const Navbar = () => {
     const { isDesktop } = useWindowDimensions();
+
+
+    if (isDesktop === undefined || isDesktop === null) {
+    return null; // or a small placeholder like <div style={{ height: 55 }} />
+  }
     const {
         autoModeActive,    // boolean - whether the auto mode is active or not
         autoModeSupported, // boolean - whether the auto mode is supported on this browser
@@ -72,13 +85,19 @@ export const Navbar = () => {
       } = useDarkMode()
 
 
-    const Logo = [
-        <Link key='logo' href="/"><Image src="/favicon-original.png" alt="Favicon" width={40} height={40}></Image></Link>
-    ]
-    
+  const Logo = [
+    <Link key='logo' href="/">
+    <Image 
+        key='logo-image'
+        src={'/photo.svg'} 
+        alt={'Logo or main image'} 
+        width={36}
+        height={36}
+    />
+    </Link>
+]
     const Links = [
         <Fragment key='links'>
-        <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/">Home</Link></LinksContainer>
         <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/about">About</Link></LinksContainer>
         <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/resume">Resume</Link></LinksContainer>
         <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}><Link href="/projects">Projects</Link></LinksContainer>

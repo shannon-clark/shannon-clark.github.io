@@ -1,4 +1,3 @@
-import { ReactNode, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faCircle as faCircleFilled } from "@fortawesome/free-solid-svg-icons/faCircle";
@@ -13,12 +12,13 @@ const ThemeSymbolContainer = styled.div`
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+    color: ${({ theme }) => theme.text};
     &:before {
         color: "${({ theme }) => theme.text}"
     }
     &:hover,
     &:focus {
-        color: ${({ theme }) => theme.textsecondary};
+        color: ${({ theme }) => theme.hovered};
     }
 `;
 
