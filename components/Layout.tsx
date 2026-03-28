@@ -29,8 +29,8 @@ export default function Layout({ children }: LayoutProps) {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#da291c" />
-        <meta name="msapplication-TileColor" content="#ffc52e" />
-        <meta name="theme-color" content="#ffc52e" />
+        <meta name="msapplication-TileColor" content="#f6f9ff" />
+        <meta name="theme-color" content="#f6f9ff" />
       </Head>
       {children}
       <Footer />

@@ -68,6 +68,10 @@ export default function Home() {
           name="description"
           content="One-page LEGO collection tracker with built sets, wishlist priorities, stats, and featured build video."
         />
+        <meta
+          name="theme-color"
+          content={activeSection !== "Overview" ? "#f6f9ff" : "#eef5ff"}
+        />
       </Head>
 
       {activeSection !== "Overview" ? (
