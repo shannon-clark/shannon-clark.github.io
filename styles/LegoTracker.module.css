@@ -1,10 +1,10 @@
 .page {
   min-height: calc(100vh - 55px);
-  padding: 5.5rem 1.25rem 2.5rem;
+  padding: 5.5rem 1.25rem 3rem;
   background:
-    radial-gradient(circle at 10% 15%, rgba(255, 197, 46, 0.28), transparent 35%),
-    radial-gradient(circle at 90% 5%, rgba(0, 102, 178, 0.2), transparent 40%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    radial-gradient(circle at 15% 10%, rgba(0, 109, 183, 0.08), transparent 42%),
+    radial-gradient(circle at 85% 0%, rgba(255, 209, 0, 0.08), transparent 38%),
+    linear-gradient(180deg, #fafbff 0%, #f2f4f8 55%, #eceff4 100%);
 }
 
 .container {
@@ -13,11 +13,11 @@
 }
 
 .hero {
-  border: 4px solid var(--lego-ink);
-  border-radius: 20px;
-  padding: 1.5rem;
-  background: var(--lego-card-bg);
-  box-shadow: 6px 6px 0 var(--lego-shadow);
+  border: 2px solid var(--lego-ink);
+  border-radius: 24px;
+  padding: 1.9rem;
+  background: #fff;
+  box-shadow: 0 6px 22px var(--lego-shadow);
 }
 
 .heroTop {
@@ -29,10 +29,10 @@
 
 .heroAvatar {
   flex-shrink: 0;
-  border: 3px solid var(--lego-ink);
+  border: 2px solid var(--lego-ink);
   border-radius: 50%;
-  box-shadow: 3px 3px 0 var(--lego-shadow);
-  background: #fff8dc;
+  box-shadow: 0 2px 10px var(--lego-shadow);
+  background: #fff;
 }
 
 .heroKicker {
@@ -69,21 +69,23 @@
 .heroAction {
   display: inline-flex;
   align-items: center;
-  border: 3px solid var(--lego-ink);
+  border: 2px solid var(--lego-ink);
   border-radius: 999px;
-  padding: 0.34rem 0.9rem;
+  padding: 0.4rem 1rem;
   font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: #fff;
-  transition: transform 0.14s ease, box-shadow 0.14s ease;
+  background: #ffd100;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease, color 0.14s ease;
 }
 
 .heroAction:hover,
 .heroAction:focus {
   transform: translateY(-1px);
-  box-shadow: 3px 3px 0 var(--lego-shadow);
+  box-shadow: 0 4px 12px var(--lego-shadow);
+  background: #e3000b;
+  color: #fff;
 }
 
 .metrics {
@@ -94,9 +96,9 @@
 }
 
 .metricTile {
-  border: 3px solid var(--lego-ink);
+  border: 2px solid var(--lego-ink);
   border-radius: 14px;
-  background: #fff8dc;
+  background: #ffd100;
   padding: 0.85rem 1rem;
 }
 
@@ -116,7 +118,7 @@
 }
 
 .section {
-  margin-top: 1.6rem;
+  margin-top: 2.4rem;
 }
 
 .scrollSection {
@@ -124,9 +126,9 @@
 }
 
 .sectionHeading {
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.6rem;
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
 }
 
 .sectionIntro {
@@ -136,12 +138,11 @@
 }
 
 .videoFeature {
-  border: 4px solid var(--lego-ink);
-  border-radius: 18px;
-  padding: 1.1rem;
-  background:
-    linear-gradient(145deg, rgba(255, 224, 124, 0.62), rgba(255, 255, 255, 0.9));
-  box-shadow: 5px 5px 0 var(--lego-shadow);
+  border: 2px solid var(--lego-ink);
+  border-radius: 22px;
+  padding: 1.4rem;
+  background: #fff;
+  box-shadow: 0 6px 22px var(--lego-shadow);
 }
 
 .videoKicker {
@@ -167,11 +168,11 @@
 }
 
 .videoFrameWrap {
-  border: 3px solid var(--lego-ink);
+  border: 2px solid var(--lego-ink);
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 4px 4px 0 var(--lego-shadow);
+  box-shadow: 0 5px 18px var(--lego-shadow);
 }
 
 .videoFrame {
@@ -185,34 +186,65 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 0.95rem;
+  grid-auto-rows: 1fr;
+}
+
+.cardGrid > * {
+  height: 100%;
 }
 
 .card {
-  border: 3px solid var(--lego-ink);
-  border-radius: 16px;
-  background: var(--lego-card-bg);
-  padding: 1rem;
-  box-shadow: 4px 4px 0 var(--lego-shadow);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--lego-ink);
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 12px var(--lego-shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
 }
 
-.cardTop {
+.card:hover,
+.card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #ffffff;
+  border-bottom: 2px solid var(--lego-ink);
+  padding: 0.7rem;
+  box-sizing: border-box;
+}
+
+.cardBody {
+  padding: 0.85rem;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.4rem;
+  flex-direction: column;
+  flex: 1;
 }
 
 .cardTitle {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .cardMeta {
   margin: 0.35rem 0 0;
-  font-size: 0.88rem;
-  color: #3f4b53;
+  font-size: 0.8rem;
+  color: #5a6570;
 }
 
 .badges {
@@ -225,10 +257,10 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  border: 2px solid var(--lego-ink);
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
   border-radius: 999px;
   padding: 0.2rem 0.6rem;
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -248,21 +280,32 @@
 }
 
 .badgeHigh {
-  background: #ffb1b1;
+  background: #e3000b;
+  color: #fff;
+  border-color: #e3000b;
 }
 
 .badgeMedium {
-  background: #ffe9ad;
+  background: #ff8c00;
+  color: #fff;
+  border-color: #ff8c00;
 }
 
 .badgeLow {
-  background: #d8e9ff;
+  background: #006db7;
+  color: #fff;
+  border-color: #006db7;
 }
 
 .notes {
-  margin: 0.75rem 0 0;
-  font-size: 0.92rem;
+  margin: auto 0 0;
+  font-size: 0.86rem;
   line-height: 1.45;
+  color: #545f68;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .storePreview {
@@ -506,7 +549,7 @@
   }
 
   .card {
-    box-shadow: 3px 3px 0 var(--lego-shadow);
+    box-shadow: 0 2px 10px var(--lego-shadow);
   }
 
   .themeHoverRegion {

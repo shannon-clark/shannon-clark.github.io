@@ -18,35 +18,25 @@ export const LegoSetCard = ({ set }: LegoSetCardProps) => {
     set.imageUrl ?? `https://images.brickset.com/sets/images/${set.setNumber}-1.jpg`;
 
   return (
-    <article className={styles.card}>
-      <div className={styles.cardTop}>
+    <a className={styles.card} href={storeUrl} target="_blank" rel="noreferrer">
+      <img
+        className={styles.cardImage}
+        src={previewImageUrl}
+        alt={`${set.name} LEGO set preview`}
+        loading="lazy"
+      />
+      <div className={styles.cardBody}>
         <h3 className={styles.cardTitle}>{set.name}</h3>
+        <p className={styles.cardMeta}>
+          #{set.setNumber} · {set.theme} · {set.pieceCount.toLocaleString()} pcs · {set.year}
+        </p>
+        <div className={styles.badges}>
+          <span className={`${styles.badge} ${statusClassMap[set.buildStatus]}`}>
+            {set.buildStatus}
+          </span>
+        </div>
+        {set.notes ? <p className={styles.notes}>{set.notes}</p> : null}
       </div>
-      <p className={styles.cardMeta}>
-        #{set.setNumber} • {set.theme} • {set.pieceCount.toLocaleString()} pieces • {set.year}
-      </p>
-      <div className={styles.badges}>
-        <span className={`${styles.badge} ${statusClassMap[set.buildStatus]}`}>
-          {set.buildStatus}
-        </span>
-      </div>
-      <a
-        className={styles.storePreview}
-        href={storeUrl}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          className={styles.storeImage}
-          src={previewImageUrl}
-          alt={`${set.name} LEGO set preview`}
-          loading="lazy"
-        />
-        <p className={styles.storeLabel}>Official LEGO Store</p>
-        <p className={styles.storePath}>Set #{set.setNumber}</p>
-        <span className={styles.storeButton}>Open Product Page</span>
-      </a>
-      {set.notes ? <p className={styles.notes}>{set.notes}</p> : null}
-    </article>
+    </a>
   );
 };
