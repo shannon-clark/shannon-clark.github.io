@@ -1,6 +1,6 @@
 .page {
-  min-height: calc(100vh - 55px);
-  padding: 5.5rem 1.25rem 3rem;
+  min-height: 100vh;
+  padding: 2rem 1.25rem 3rem;
   background:
     radial-gradient(circle at 15% 10%, rgba(0, 109, 183, 0.08), transparent 42%),
     radial-gradient(circle at 85% 0%, rgba(255, 209, 0, 0.08), transparent 38%),
@@ -10,6 +10,39 @@
 .container {
   width: min(1100px, 100%);
   margin: 0 auto;
+}
+
+.sectionTracker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  border-bottom: 2px solid var(--lego-ink);
+  padding: 0.48rem 1rem;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 12px var(--lego-shadow);
+  backdrop-filter: blur(8px);
+}
+
+.sectionTrackerLabel {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: #59636f;
+}
+
+.sectionTrackerValue {
+  font-size: 0.84rem;
+  font-weight: 900;
+  color: var(--lego-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .hero {
@@ -84,8 +117,8 @@
 .heroAction:focus {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px var(--lego-shadow);
-  background: #e3000b;
-  color: #fff;
+  background: #e6f2ff;
+  color: #004f89;
 }
 
 .metrics {
@@ -122,7 +155,7 @@
 }
 
 .scrollSection {
-  scroll-margin-top: 68px;
+  scroll-margin-top: 20px;
 }
 
 .sectionHeading {
@@ -230,6 +263,10 @@
   flex: 1;
 }
 
+.cardHeader {
+  min-height: 4.15rem;
+}
+
 .cardTitle {
   margin: 0;
   font-size: 1rem;
@@ -248,7 +285,7 @@
 }
 
 .badges {
-  margin-top: 0.75rem;
+  margin-top: 0.35rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -280,25 +317,26 @@
 }
 
 .badgeHigh {
-  background: #e3000b;
-  color: #fff;
-  border-color: #e3000b;
+  background: #ffe2e5;
+  color: #8f1f2d;
+  border-color: #efb8bf;
 }
 
 .badgeMedium {
-  background: #ff8c00;
-  color: #fff;
-  border-color: #ff8c00;
+  background: #fff1d8;
+  color: #8a5a14;
+  border-color: #efcf98;
 }
 
 .badgeLow {
-  background: #006db7;
-  color: #fff;
-  border-color: #006db7;
+  background: #e1effc;
+  color: #215f98;
+  border-color: #b9d3ed;
 }
 
 .notes {
-  margin: auto 0 0;
+  margin: 0.35rem 0 0;
+  padding-top: 0.12rem;
   font-size: 0.86rem;
   line-height: 1.45;
   color: #545f68;
@@ -521,12 +559,14 @@
 .footer {
   display: block;
   text-align: center;
-  padding: 22px 0;
+  padding: 18px 14px;
   margin-top: 0;
-  color: var(--lego-ink);
-  border-top: 3px solid var(--lego-ink);
-  background: #ffe07c;
+  color: #5a6570;
+  border-top: 1px solid #d9dde4;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
   font-weight: 700;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 900px) {
@@ -537,11 +577,11 @@
 
 @media (max-width: 640px) {
   .page {
-    padding-top: 4.9rem;
+    padding-top: 2.3rem;
   }
 
   .scrollSection {
-    scroll-margin-top: 62px;
+    scroll-margin-top: 14px;
   }
 
   .hero {
@@ -550,6 +590,26 @@
 
   .card {
     box-shadow: 0 2px 10px var(--lego-shadow);
+  }
+
+  .sectionTracker {
+    padding: 0.42rem 0.75rem;
+  }
+
+  .sectionTrackerLabel {
+    font-size: 0.62rem;
+  }
+
+  .sectionTrackerValue {
+    font-size: 0.74rem;
+  }
+
+  .footer {
+    background: #ffffff;
+    border-top: 1px solid #d9dde4;
+    color: #56606b;
+    font-size: 0.82rem;
+    padding: 14px 10px;
   }
 
   .themeHoverRegion {

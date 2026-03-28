@@ -26,10 +26,12 @@ export const WishlistSetCard = ({ set }: WishlistSetCardProps) => {
         loading="lazy"
       />
       <div className={styles.cardBody}>
-        <h3 className={styles.cardTitle}>{set.name}</h3>
-        <p className={styles.cardMeta}>
-          #{set.setNumber} · {set.theme} · {set.pieceCount.toLocaleString()} pcs · {set.year}
-        </p>
+        <div className={styles.cardHeader}>
+          <h3 className={styles.cardTitle}>{set.name}</h3>
+          <p className={styles.cardMeta}>
+            #{set.setNumber} · {set.theme} · {set.pieceCount.toLocaleString()} pcs · {set.year}
+          </p>
+        </div>
         <div className={styles.badges}>
           <span className={`${styles.badge} ${priorityClassMap[set.priority]}`}>
             {set.priority} Priority

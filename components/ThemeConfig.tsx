@@ -44,7 +44,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>`
       background: ${({ theme }) => theme.background};
       color: ${({ theme }) => theme.text};
       margin: 0;
-      padding-top: 55px;
+      padding-top: 0;
       font-family: var(--font-body);
       overflow-x: hidden;
       overflow-y: auto;

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { featuredSets, sortedOwnedSets, sortedWishlistSets } from "../lib/legoUtils";
 import { ownedSets, wishlistSets } from "../data/legoData";
@@ -25,6 +26,40 @@ const cardReveal = {
 };
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState("Overview");
+
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll-section]"));
+    if (!sections.length) {
+      return;
+    }
+
+    const updateActiveSection = () => {
+      const marker = window.innerHeight * 0.28;
+      let current = sections[0];
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= marker) {
+          current = section;
+        } else {
+          break;
+        }
+      }
+
+      setActiveSection(current.dataset.sectionLabel ?? "Overview");
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
+
   return (
     <main className={styles.page} id="top">
       <Head>
@@ -35,11 +70,21 @@ export default function Home() {
         />
       </Head>
 
+      {activeSection !== "Overview" ? (
+        <div className={styles.sectionTracker}>
+          <span className={styles.sectionTrackerLabel}>Now Viewing</span>
+          <strong className={styles.sectionTrackerValue}>{activeSection}</strong>
+        </div>
+      ) : null}
+
       <div className={styles.container}>
         <motion.section
+          id="overview"
           className={`${styles.hero} ${styles.scrollSection}`}
+          data-scroll-section="overview"
+          data-section-label="Overview"
           variants={sectionReveal}
-          initial="hidden"
+          initial={false}
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
         >
@@ -80,8 +125,10 @@ export default function Home() {
         <motion.section
           id="video"
           className={`${styles.section} ${styles.scrollSection}`}
+          data-scroll-section="video"
+          data-section-label="Video"
           variants={sectionReveal}
-          initial="hidden"
+          initial={false}
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
         >
@@ -102,9 +149,12 @@ export default function Home() {
         </motion.section>
 
         <motion.section
+          id="featured"
           className={`${styles.section} ${styles.scrollSection}`}
+          data-scroll-section="featured"
+          data-section-label="Featured"
           variants={sectionReveal}
-          initial="hidden"
+          initial={false}
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
@@ -112,7 +162,7 @@ export default function Home() {
           <motion.div
             className={styles.cardGrid}
             variants={cardStagger}
-            initial="hidden"
+            initial={false}
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
           >
@@ -127,8 +177,10 @@ export default function Home() {
         <motion.section
           id="collection"
           className={`${styles.section} ${styles.scrollSection}`}
+          data-scroll-section="collection"
+          data-section-label="Collection"
           variants={sectionReveal}
-          initial="hidden"
+          initial={false}
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
         >
@@ -139,7 +191,7 @@ export default function Home() {
           <motion.div
             className={styles.cardGrid}
             variants={cardStagger}
-            initial="hidden"
+            initial={false}
             whileInView="show"
             viewport={{ once: true, amount: 0.05 }}
           >
@@ -154,19 +206,18 @@ export default function Home() {
         <motion.section
           id="wishlist"
           className={`${styles.section} ${styles.scrollSection}`}
+          data-scroll-section="wishlist"
+          data-section-label="Wishlist"
           variants={sectionReveal}
-          initial="hidden"
+          initial={false}
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
           <h2 className={styles.sectionHeading}>Wishlist</h2>
-          <p className={styles.sectionIntro}>
-            My next-target sets with priority labels and short rationale notes.
-          </p>
           <motion.div
             className={styles.cardGrid}
             variants={cardStagger}
-            initial="hidden"
+            initial={false}
             whileInView="show"
             viewport={{ once: true, amount: 0.05 }}
           >

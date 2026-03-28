@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Footer from "./Footer";
-import { Navbar } from "./Navbar";
 import React from "react";
 
 interface LayoutProps {
@@ -33,7 +32,6 @@ export default function Layout({ children }: LayoutProps) {
         <meta name="msapplication-TileColor" content="#ffc52e" />
         <meta name="theme-color" content="#ffc52e" />
       </Head>
-      <Navbar />
       {children}
       <Footer />
     </div>
