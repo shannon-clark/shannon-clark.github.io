@@ -18,7 +18,7 @@ const useWindowDimensions = (): Dimensions => {
       setWindowDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
-        isDesktop: window.innerWidth > 500,
+        isDesktop: window.innerWidth >= 860,
       });
     }
     handleResize();

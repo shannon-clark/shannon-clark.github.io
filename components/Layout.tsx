@@ -29,9 +29,9 @@ export default function Layout({ children }: LayoutProps) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#da291c" />
+        <meta name="msapplication-TileColor" content="#ffc52e" />
+        <meta name="theme-color" content="#ffc52e" />
       </Head>
       <Navbar />
       {children}

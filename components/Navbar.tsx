@@ -1,15 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import { HamburgerIcon } from "./Hamburger";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import { Fragment } from "react";
-import { useTheme } from "next-themes";
-import { ThemeSymbol } from "./ThemeSymbol";
 
 interface NavProps {
   isDesktop: boolean;
-  darkModeActive: boolean;
 }
 
 const NavContainer = styled.nav<NavProps>`
@@ -24,92 +20,70 @@ const NavContainer = styled.nav<NavProps>`
   justify-content: ${({ isDesktop }) =>
     isDesktop ? "center" : "space-between"};
   align-items: center;
-  border-bottom: ${({ isDesktop }) => (isDesktop ? "1px solid" : "none")};
-  border-bottom-color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.nav};
+  border-bottom: 3px solid ${({ theme }) => theme.border};
+  z-index: 120;
 `;
 
 const LinksContainer = styled.div<NavProps>`
   margin-left: 10px;
   margin-right: 10px;
   padding-top: ${({ isDesktop }) => (isDesktop ? "0px" : "20px")};
-  font-family:
-    Helvetica Neue,
-    Arial,
-    sans-serif;
-  font-size: large;
+  font-family: var(--font-body);
+  font-size: ${({ isDesktop }) => (isDesktop ? "1rem" : "1.08rem")};
   font-weight: bold;
   color: ${({ theme }) => theme.text};
-  transition: font-size 0.25s;
+  transition: transform 0.2s;
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.hovered};
+    transform: translateY(-1px);
   }
 `;
 
 const LogoContainer = styled.div`
-  margin-top: 2px;
+  margin-top: 3px;
   margin-left: 10px;
   margin-right: 10px;
-`;
-
-const ThemeContainer = styled.div`
-  margin-left: 10px;
-  margin-right: 10px;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 export const Navbar = () => {
-  const { theme } = useTheme();
-  const darkModeActive = theme === "dark";
   const { isDesktop } = useWindowDimensions();
 
   if (isDesktop === undefined || isDesktop === null) {
     return null;
   }
 
-  const Logo = [
-    <Link key="logo" href="/">
-      <Image
-        key="logo-image"
-        src={"/photo.svg"}
-        alt={"Logo or main image"}
-        width={36}
-        height={36}
-      />
-    </Link>,
-  ];
   const Links = [
     <Fragment key="links">
-      <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
-        <Link href="/about">About</Link>
+      <LinksContainer isDesktop={isDesktop}>
+        <Link href="/#collection">Collection</Link>
       </LinksContainer>
-      <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
-        <Link href="/resume">Resume</Link>
+      <LinksContainer isDesktop={isDesktop}>
+        <Link href="/#wishlist">Wishlist</Link>
       </LinksContainer>
-      <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
-        <Link href="/projects">Projects</Link>
+      <LinksContainer isDesktop={isDesktop}>
+        <Link href="/#stats">Stats</Link>
       </LinksContainer>
-      <LinksContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
-        <Link href="/contact">Contact</Link>
+      <LinksContainer isDesktop={isDesktop}>
+        <Link href="/#about">About</Link>
       </LinksContainer>
     </Fragment>,
   ];
 
   return (
-    <NavContainer isDesktop={isDesktop} darkModeActive={darkModeActive}>
+    <NavContainer isDesktop={isDesktop}>
       {isDesktop ? (
-        <>
-          <LogoContainer>{Logo}</LogoContainer>
-          {Links}
-          <ThemeContainer>
-            <ThemeSymbol />
-          </ThemeContainer>
-        </>
+        <>{Links}</>
       ) : (
-        <>
-          <HamburgerIcon>{Links}</HamburgerIcon>
-          {Logo}
-          <ThemeSymbol />
-        </>
+        <HamburgerIcon>{Links}</HamburgerIcon>
       )}
     </NavContainer>
   );
