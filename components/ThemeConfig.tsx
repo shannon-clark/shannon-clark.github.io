@@ -16,18 +16,18 @@ export interface ThemeProps {
 }
 
 export const lightTheme: ThemeProps = {
-  background: "#f9f4dd",
-  surface: "#fff5c9",
-  card: "#fffdf5",
-  text: "#1f1c16",
-  textsecondary: "#2e65a9",
-  border: "#1f1c16",
-  nav: "#ffcb42",
-  accent: "#da291c",
-  accentAlt: "#0057a4",
-  warning: "#f4a61b",
-  hovered: "#da291c",
-  shadow: "rgba(26, 22, 14, 0.35)",
+  background: "#f2f2f2",
+  surface: "#e8f0fe",
+  card: "#ffffff",
+  text: "#1a1a1a",
+  textsecondary: "#006DB7",
+  border: "#1a1a1a",
+  nav: "#FFD100",
+  accent: "#E3000B",
+  accentAlt: "#006DB7",
+  warning: "#FF8C00",
+  hovered: "#E3000B",
+  shadow: "rgba(0, 0, 0, 0.10)",
 };
 
 export const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>`
