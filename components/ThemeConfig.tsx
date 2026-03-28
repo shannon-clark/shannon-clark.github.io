@@ -45,10 +45,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>`
       --lego-shadow: ${({ theme }) => theme.shadow};
       --font-display: "Bungee", "Trebuchet MS", sans-serif;
       --font-body: "Nunito", "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 14% 8%, rgba(0, 109, 183, 0.09), transparent 40%),
-        radial-gradient(circle at 86% 0%, rgba(255, 209, 0, 0.09), transparent 34%),
-        linear-gradient(180deg, #fbfcff 0%, #f2f4f8 56%, #e9edf3 100%);
+      background: #eef5ff;
       color: ${({ theme }) => theme.text};
       margin: 0;
       padding-top: 0;
